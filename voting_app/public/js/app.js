@@ -1,8 +1,18 @@
 class ProductList extends React.Component {
     render() {
+        const product = Seed.products[0];
+        
         return (
             <div className="ui unstackable items">
-                <Product />
+                <Product
+                  id={product.id}
+                  title={product.title}
+                  description={product.description}
+                  url={product.url}
+                  votes={product.votes}
+                  submitterAvatarUrl={product.submitterAvatar}
+                  productImageUrl={product.productImageUrl}
+                />
             </div>
         );
     }
@@ -24,7 +34,7 @@ class Product extends React.Component {
                     <span>Submitted by:</span>
                     <img
                         className='ui avatar image'
-                        src='images/product/daniel.jpg'
+                        src='images/avatars/daniel.jpg'
                     />
                 </div>
             </div>
