@@ -10,7 +10,7 @@ class ProductList extends React.Component {
                   description={product.description}
                   url={product.url}
                   votes={product.votes}
-                  submitterAvatarUrl={product.submitterAvatar}
+                  submitterAvatarUrl={product.submitterAvatarUrl}
                   productImageUrl={product.productImageUrl}
                 />
             </div>
@@ -23,18 +23,28 @@ class Product extends React.Component {
         return (
         <div className='item'>
             <div className='image'>
-                <img src='images/products/image-aqua.png' />
+                <img src={this.props.productImageUrl} />
+            </div>
+            <div className="header">
+              <a>
+                  <i className='large caret up icon' />
+              </a>
+              {this.props.vote}
             </div>
             <div className='middle aligned content'>
                 <div className='description'>
-                    <a>Fort Night</a>
-                    <p>Authentic Rennaissance actors, delivered in just two weeks.</p>
+                    <a href={this.props.url}>
+                        {this.props.title}
+                    </a>
+                    <p>
+                        {this.props.description}
+                    </p>
                 </div>
                 <div className='extra'>
                     <span>Submitted by:</span>
                     <img
                         className='ui avatar image'
-                        src='images/avatars/daniel.jpg'
+                        src={this.props.submitterAvatarUrl}
                     />
                 </div>
             </div>
