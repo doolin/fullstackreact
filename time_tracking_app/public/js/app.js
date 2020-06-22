@@ -26,7 +26,7 @@ class TimersDashboard extends React.Component {
     return (
       <div className="ui three column centered grid">
         <div className="column">
-          <EditableTimerList />
+          <EditableTimerList timers={this.state.timers} />
           <ToggleableTimerForm isOpen={true} />
         </div>
       </div>
