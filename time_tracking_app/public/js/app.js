@@ -36,7 +36,7 @@ class TimersDashboard extends React.Component {
 
 class EditableTimerList extends React.Component {
   render() {
-    const timers = this.props.timers((timer) => (
+    const timers = this.props.timers.map((timer) => (
       <EditableTimer
         key={timer.id}
         id={timer.id}
@@ -117,8 +117,18 @@ class TimerForm extends React.Component {
               />
             </div>
             <div className="ui two bottom attached buttons">
-              <button className="ui basic blue button">{submitText}</button>
-              <button className="ui basic red button">Cancel</button>
+              <button
+                className="ui basic blue button"
+                onClick={this.handleSubmit}
+              >
+                {submitText}
+              </button>
+              <button
+                className="ui basic red button"
+                onClick={this.props.onFormClose}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
