@@ -93,8 +93,16 @@ class TimerForm extends React.Component {
     this.setState({ project: event.target.value });
   };
 
+  handleSubmit = () => {
+    this.props.onFormSubmit({
+      id: this.props.id,
+      title: this.props.title,
+      project: this.props.project,
+    });
+  };
+
   render() {
-    const submitText = this.props.title ? 'Update' : 'Create';
+    const submitText = this.props.id ? 'Update' : 'Create';
 
     return (
       <div className="ui centered card">
