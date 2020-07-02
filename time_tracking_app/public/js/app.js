@@ -3,6 +3,17 @@
   no-undef, jsx-a11y/label-has-for
 */
 class TimersDashboard extends React.Component {
+  handleCreateFormSubmit = (timer) => {
+    this.createTimer(timer);
+  };
+
+  createTimer = (timer) => {
+    const t = helpers.newTimer(timer);
+    this.setState({
+      timers: this.state.timers.concat(t),
+    })
+  };
+
   state = {
     timers: [
       {
@@ -27,7 +38,7 @@ class TimersDashboard extends React.Component {
       <div className="ui three column centered grid">
         <div className="column">
           <EditableTimerList timers={this.state.timers} />
-          <ToggleableTimerForm isOpen={true} />
+          <ToggleableTimerForm onFormSubmit={this.handleCreateFormSubmit} />
         </div>
       </div>
     );
