@@ -11,7 +11,7 @@ class TimersDashboard extends React.Component {
     const t = helpers.newTimer(timer);
     this.setState({
       timers: this.state.timers.concat(t),
-    })
+    });
   };
 
   state = {
@@ -58,11 +58,7 @@ class EditableTimerList extends React.Component {
       />
     ));
 
-    return (
-      <div id='timers'>
-        {timers}
-      </div>
-    );
+    return <div id="timers">{timers}</div>;
   }
 }
 
@@ -74,7 +70,11 @@ class EditableTimer extends React.Component {
   render() {
     if (this.state.editFormOpen) {
       return (
-        <TimerForm id={this.props.id} title={this.props.title} project={this.props.project} />
+        <TimerForm
+          id={this.props.id}
+          title={this.props.title}
+          project={this.props.project}
+        />
       );
     } else {
       return (
@@ -94,7 +94,7 @@ class TimerForm extends React.Component {
   state = {
     title: this.props.title || '',
     project: this.props.project || '',
-  }
+  };
 
   handleTitleChange = (event) => {
     this.setState({ title: event.target.value });
@@ -176,10 +176,12 @@ class ToggleableTimerForm extends React.Component {
 
   render() {
     if (this.state.isOpen) {
-      return <TimerForm
-        onFormSubmit={this.handleFormSubmit}
-        onFormClose={this.handleFormClose}
-      />;
+      return (
+        <TimerForm
+          onFormSubmit={this.handleFormSubmit}
+          onFormClose={this.handleFormClose}
+        />
+      );
     } else {
       return (
         <div className="ui basic content center aligned segment">
@@ -208,7 +210,10 @@ class Timer extends React.Component {
             <h2>{elapsedString}</h2>
           </div>
           <div className="extra content">
-            <span className="right floated edit icon">
+            <span
+              className="right floated edit icon"
+              onClick={this.props.onEditClick}
+            >
               <i className="edit icon" />
             </span>
           </div>
