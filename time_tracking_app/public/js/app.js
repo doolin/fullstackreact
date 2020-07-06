@@ -19,8 +19,11 @@ class TimersDashboard extends React.Component {
   };
 
   updateTimer = (attrs) => {
+    // console.log(timers);
     this.setState({
-      timers: this.setState.timers.map((timer) => {
+      timers: this.state.timers.map((timer) => {
+        // TODO: once all this is running correctly, see if this
+        // conditional block can go into its own function.
         if (timer.id === attrs.id) {
           return Object.assign({}, timer, {
             title: attrs.title,
