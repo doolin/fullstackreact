@@ -273,6 +273,14 @@ class Timer extends React.Component {
     this.props.onTrashClick(this.props.id);
   };
 
+  handleStartClick = () => {
+    this.props.onStartClick(this.props.id);
+  };
+
+  handleStopClick = () => {
+    this.props.onStopClick(this.props.id);
+  };
+
   render() {
     const elapsedString = helpers.renderElapsedString(
       this.props.elapsed,
@@ -303,6 +311,11 @@ class Timer extends React.Component {
           </div>
         </div>
         <div className="ui bottom attached blue basic button">Start</div>
+        <TimerActionButton
+          timerIsRunning={!!this.props.runningSince}
+          onStartClick={this.handleStartClick}
+          onStopClick={this.handleStopClick}
+        />
       </div>
     );
   }
