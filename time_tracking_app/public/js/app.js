@@ -115,6 +115,8 @@ class TimersDashboard extends React.Component {
             timers={this.state.timers}
             onFormSubmit={this.handleEditFormSubmit}
             onTrashClick={this.handleTrashClick}
+            onStartClick={this.handleStartClick}
+            onStopClick={this.handleStopClick}
           />
           <ToggleableTimerForm onFormSubmit={this.handleCreateFormSubmit} />
         </div>
