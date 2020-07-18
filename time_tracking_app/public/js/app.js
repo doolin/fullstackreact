@@ -3,6 +3,25 @@
   no-undef, jsx-a11y/label-has-for
 */
 class TimersDashboard extends React.Component {
+  state = {
+    timers: [
+      {
+        title: 'Practice squat',
+        project: 'Gym Chores',
+        id: uuid.v4(),
+        elapsed: 5456099,
+        runningSince: Date.now(),
+      },
+      {
+        title: 'Bake squash',
+        project: 'Kitchen Chores',
+        id: uuid.v4(),
+        elapsed: 1273998,
+        runningSince: null,
+      },
+    ],
+  };
+
   handleCreateFormSubmit = (timer) => {
     this.createTimer(timer);
   };
@@ -21,6 +40,37 @@ class TimersDashboard extends React.Component {
 
   handleStopClick = (timerId) => {
     this.stopTimer(timerId);
+  };
+
+  createTimer = (timer) => {
+    const t = helpers.newTimer(timer);
+    this.setState({
+      timers: this.state.timers.concat(t),
+    });
+  };
+
+  updateTimer = (attrs) => {
+    // console.log(timers);
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        // TODO: once all this is running correctly, see if this
+        // conditional block can go into its own function.
+        if (timer.id === attrs.id) {
+          return Object.assign({}, timer, {
+            title: attrs.title,
+            project: attrs.project,
+          });
+        } else {
+          return timer;
+        }
+      }),
+    });
+  };
+
+  deleteTimer = (timerId) => {
+    this.setState({
+      timers: this.state.timers.filter((t) => t.id !== timerId),
+    });
   };
 
   startTimer = (timerId) => {
@@ -55,56 +105,6 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
-  };
-
-  createTimer = (timer) => {
-    const t = helpers.newTimer(timer);
-    this.setState({
-      timers: this.state.timers.concat(t),
-    });
-  };
-
-  deleteTimer = (timerId) => {
-    this.setState({
-      timers: this.state.timers.filter((t) => t.id !== timerId),
-    });
-  };
-
-  updateTimer = (attrs) => {
-    // console.log(timers);
-    this.setState({
-      timers: this.state.timers.map((timer) => {
-        // TODO: once all this is running correctly, see if this
-        // conditional block can go into its own function.
-        if (timer.id === attrs.id) {
-          return Object.assign({}, timer, {
-            title: attrs.title,
-            project: attrs.project,
-          });
-        } else {
-          return timer;
-        }
-      }),
-    });
-  };
-
-  state = {
-    timers: [
-      {
-        title: 'Practice squat',
-        project: 'Gym Chores',
-        id: uuid.v4(),
-        elapsed: 5456099,
-        runningSince: Date.now(),
-      },
-      {
-        title: 'Bake squash',
-        project: 'Kitchen Chores',
-        id: uuid.v4(),
-        elapsed: 1273998,
-        runningSince: null,
-      },
-    ],
   };
 
   render() {
