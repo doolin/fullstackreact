@@ -100,6 +100,10 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+
+    client.startTimer(
+      { id: timerId, start: now }
+    );
   };
 
   stopTimer = (timerId) => {
@@ -118,6 +122,10 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+
+    client.stopTimer(
+      { id: timerId, stop: now }
+    );
   };
 
   render() {
