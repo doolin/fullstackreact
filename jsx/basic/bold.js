@@ -1,10 +1,11 @@
 class Bold extends React.Component {
   render () {
-    return React.createElement('b');
+    return React.createElement('b', null, 'Text from Bold class');
   }
 }
 
-// ReactDOM.render(React.createElement(Bold, {}), mountElement)
+var mountElement = document.getElementById('root');
+ReactDOM.render(React.createElement(Bold, {}), mountElement)
 
 // This works in the console, but does not work
 // when loaded from this file. It fails with
@@ -15,6 +16,6 @@ class Bold extends React.Component {
 // This script has to be run _after_ the DOM is loaded.
 // The problem above was that I was loading the script
 // in the header.
-var mountElement = document.getElementById('root');
-var boldElement = React.createElement('b', null, "Some text");
-ReactDOM.render(boldElement, mountElement);
+// var mountElement = document.getElementById('root');
+// var boldElement = React.createElement('b', null, "Some text");
+// ReactDOM.render(boldElement, mountElement);
