@@ -20,4 +20,6 @@ ReactDOM.render(React.createElement(Bold, {}), mountElement)
 // Example 2 also works, but will overwrite the previously
 // mounted element from Example 1.
 var boldElement = React.createElement('b', null, "Some text");
-ReactDOM.render(boldElement, mountElement);
+var h1Element = React.createElement('h1', null, "H1!");
+
+ReactDOM.render([h1Element,boldElement], mountElement);
