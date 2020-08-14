@@ -10,6 +10,16 @@
 
   <body>
     <div id="root"></div>
+    <!-- 
+      This is not going to work from localhost, it results in an
+      error "origin 'null' has been blocked by CORS policy." See
+      https://stackoverflow.com/questions/53042123/can-babel-standalone-be-used-if-index-html-is-served-locally-no-webserver
+      for more details.
+      
+      Options going forward from here include:
+      1. compiling everything locally first;
+      2. serving the file via webserver of some sort.
+    -->
     <script type="text/babel" src="./header.js"></script>
   </body>
 </html>
