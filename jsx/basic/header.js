@@ -1,4 +1,4 @@
-class HeaderDiv extends ReactComponent {
+class HeaderDiv extends React.Component {
   render () {
     return (
       <div>
@@ -10,7 +10,7 @@ class HeaderDiv extends ReactComponent {
   }
 }
 
-class Header extends ReactComponent {
+class Header extends React.Component {
   render () {
     return (
       <h1>{this.props.headerText}</h1>

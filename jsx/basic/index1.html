@@ -19,6 +19,15 @@
       Options going forward from here include:
       1. compiling everything locally first;
       2. serving the file via webserver of some sort.
+
+      Marching along with option 2 first:
+      * sudo apachectl start
+      * from ~/public_html: ln -s ~/src/fullstackreact/jsx/basic/ jsx
+      * http://http://localhost/~doolin/jsx/index1.html
+
+      This resulted in an error:
+      `DOMException: Failed to read the 'ready' property from ServiceWorkerContainer`
+      which may be a load path problemm, or something else.
     -->
     <script type="text/babel" src="./header.js"></script>
   </body>
